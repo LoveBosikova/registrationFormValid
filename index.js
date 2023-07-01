@@ -1,8 +1,10 @@
 const form = document.forms.regform;
 
+
 function checkValidity(input) {
     let validity = input.validity;
     const errors = [];
+    let correctForm = true;
 
     if (validity.patternMismatch) {
         errors.push('Неверный формат заполнения'); 
@@ -41,27 +43,63 @@ function checkValidity(input) {
     }
     const parent = input.parentNode;
     const errorDiv = parent.querySelector('.error-message');
-    console.log(errorDiv);
 
     if (errors.length !== 0) {
         parent.classList.add('.error');
+        errorDiv.innerText ='';
         for (const error of errors) {
             errorDiv.innerHTML += `${error}<br>`;
+            correctForm = false;
         }
     } else if (errors.length === 0) {
         errorDiv.innerText ='';
+        
+    }
+    return correctForm;
+}
+
+function isCorrectForm(form) {
+    const inputsSet = form.querySelectorAll('input');
+    const validityInputs = [];
+    for (const input of inputsSet) {
+        const validityInput = checkValidity(input);
+        validityInputs.push(validityInput);
+    }
+    console.log(validityInputs);
+    if(!validityInputs.includes(false)){
+        return true;
+    } else {
+        return false;
     }
 }
 
-function checkAll(form) {
-    const inputsSet = form.querySelectorAll('input');
+function isCorrectPassword (firstPassword, secondPassword) {
+    if(firstPassword === secondPassword) {
+        return true;
+    } else if (firstPassword !== secondPassword){
+        const pasError = document.getElementById('passwordErrorMessage');
+        pasError.innerText = '';
+        pasError.innerText = 'Пароли не совпали, попробуйте ещё раз';
+        return false;
+    } 
+    
+}
 
-    for (const input of inputsSet) {
-        checkValidity(input);
-    }
+function isCorrectSelect(select){
+    return select.value === '' ? false : true; 
 }
 
 form.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    checkAll(form);
+
+    const firstPassword = document.getElementById('firstPassword').value;
+    const secondPassword = document.getElementById('secondPassword').value;
+
+    const select = form.elements.profession;
+
+    isCorrectPassword(firstPassword, secondPassword);
+
+    if(((isCorrectForm(form)) === true) && (isCorrectPassword(firstPassword, secondPassword)) && (isCorrectSelect(select))) {
+        form.reset();
+    }
   });

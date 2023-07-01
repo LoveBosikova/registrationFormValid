@@ -18,11 +18,11 @@
                 <legend>Основная информация</legend>
                 <div class="question">
                     <input class="input" type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required/>
-                    <span class="error-message" id="name-error"></span>
+                    <div class="error-message"></div>
                 </div>
                 <div class="question">
                     <input  class="input"type="email" name="email" placeholder="E-Mail" required/>
-                    <span class="error-message" id="email-error"></span>
+                    <div class="error-message"></div>
                 </div>
             </fieldset>
 
@@ -30,20 +30,20 @@
                 <legend>Дополнительно</legend>
                 <div class="question ">
                     <input class="input" type="number" name="age" placeholder="Ваш возраст" required/>
-                    <span class="error-message" id="age-error"></span>
+                    <div class="error-message"></div>
                 </div>
 
-                <div class="question flex-row">
+                <div class="question flex-column">
                     <div>
                         <input type="radio" id="man" name="sex" value="man"
                             checked>
                         <label for="man">Мужчина</label>
-                        <span class="error-message"></span>
+                        <div class="error-message"></div>
                     </div>
                     <div>
                         <input type="radio" id="woman" name="sex" value="woman">
                         <label for="woman">Женщина</label>
-                        <span class="error-message"></span>
+                        <div class="error-message"></div>
                     </div>
                 </div>
 
@@ -58,37 +58,40 @@
                         <option value="seilman">Продавец</option>
                         <option value="another">Другое</option>
                     </select>
-                    <span class="error-message" id="profession-error"></span>
+                    <div class="error-message"></div>
                 </div>
             </fieldset>
 
                 <fieldset class="password">
                     <legend>Завершите регистрацию</legend>
-                    <div>
-                        <input class="input" type="text" name="password" minlength="5" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Пароль" required/>
-                        <span class="error-message" id="password-error"></span>
+                    <div class="text-field">
+                        <input class="input" type="text" name="password" minlength="5" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Пароль" id="firstPassword" required/>
+                        <div class="error-message" ></span>
                     </div>
-                    <div>
-                        <input class="input" type="text" name="ceckPassword" placeholder="Повторите пароль" required/>
-                        <span class="error-message" id="checkPassword-error"></span>
+                    <div class="text-field">
+                        <input class="input" type="text" name="ceckPassword" placeholder="Повторите пароль" id="secondPassword" required/>
+                        <div class="error-message"></div>
                     </div>
+                    <div class="error-message" id="passwordErrorMessage"></div>
                 </fieldset>
 
                 <fieldset>
                     <legend>Согласие на обработку персональных данных</legend>
                     <div>
                         <div class="checkbox">
-                            <input type="checkbox" name="agreement" id="agreement"/>
+                            <input type="checkbox" name="agreement" id="agreement" required/>
                             <label class="grey" for="agreement">Даю согласие</label>
-                            <span class="error-message" id="agreement-error"></span>
+                            <div class="error-message" id="agreement-error"></div>
                         </div>
                     </div>
                 </fieldset>
             <button class="submit">Готово</button>
         </form>
+
         <div class="picWrap">
             <img src="main1.png" alt="Просто красивая картинка для красоты">
         </div>
+        
     </main>
     <script src="index.js"></script>
 </body>
