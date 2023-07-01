@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <form action="submit" method="post" name="regform" novalidate>
+            <h1>Регистрация</h1>
+
+            <fieldset>
+                <legend>Основная информация</legend>
+                <div class="question">
+                    <input class="input" type="text" name="name" placeholder="Ваше имя" minlength="2" maxlength="20" required/>
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                <div class="question">
+                    <input  class="input"type="email" name="email" placeholder="E-Mail" required/>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Дополнительно</legend>
+                <div class="question ">
+                    <input class="input" type="number" name="age" placeholder="Ваш возраст" required/>
+                    <span class="error-message" id="age-error"></span>
+                </div>
+
+                <div class="question flex-row">
+                    <div>
+                        <input type="radio" id="man" name="sex" value="man"
+                            checked>
+                        <label for="man">Мужчина</label>
+                        <span class="error-message"></span>
+                    </div>
+                    <div>
+                        <input type="radio" id="woman" name="sex" value="woman">
+                        <label for="woman">Женщина</label>
+                        <span class="error-message"></span>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <select class="input" name="profession" id="professionSelect" required>
+                        <option value="">Выберите профессию</option>
+                        <option value="doc">Врач</option>
+                        <option value="programmist">Программист</option>
+                        <option value="teacher">Учитель</option>
+                        <option value="diz">Дизайнер</option>
+                        <option value="developer">Инженер</option>
+                        <option value="seilman">Продавец</option>
+                        <option value="another">Другое</option>
+                    </select>
+                    <span class="error-message" id="profession-error"></span>
+                </div>
+            </fieldset>
+
+                <fieldset class="password">
+                    <legend>Завершите регистрацию</legend>
+                    <div>
+                        <input class="input" type="text" name="password" minlength="5" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Пароль" required/>
+                        <span class="error-message" id="password-error"></span>
+                    </div>
+                    <div>
+                        <input class="input" type="text" name="ceckPassword" placeholder="Повторите пароль" required/>
+                        <span class="error-message" id="checkPassword-error"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Согласие на обработку персональных данных</legend>
+                    <div>
+                        <div class="checkbox">
+                            <input type="checkbox" name="agreement" id="agreement"/>
+                            <label class="grey" for="agreement">Даю согласие</label>
+                            <span class="error-message" id="agreement-error"></span>
+                        </div>
+                    </div>
+                </fieldset>
+            <button class="submit">Готово</button>
+        </form>
+        <div class="picWrap">
+            <img src="main1.png" alt="Просто красивая картинка для красоты">
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
