@@ -86,7 +86,15 @@ function isCorrectPassword (firstPassword, secondPassword) {
 }
 
 function isCorrectSelect(select){
-    return select.value === '' ? false : true; 
+    const selectError = document.getElementById('selectError');
+    selectError.innerText = '';
+    if (select.value === ''){
+        selectError.innerText = 'Выберите профессию';
+        return false;
+    } 
+    else if (select.value !== ''){
+        return true;
+    }
 }
 
 form.addEventListener('submit', function (evt) {
@@ -98,6 +106,7 @@ form.addEventListener('submit', function (evt) {
     const select = form.elements.profession;
 
     isCorrectPassword(firstPassword, secondPassword);
+    (isCorrectSelect(select));
 
     if(((isCorrectForm(form)) === true) && (isCorrectPassword(firstPassword, secondPassword)) && (isCorrectSelect(select))) {
         form.reset();
